@@ -4,8 +4,12 @@ using UnityEngine;
 
 namespace Evader.Player
 {
+
     public class PlayerDeath : MonoBehaviour
     {
+        public GameObject hud;
+        public GameObject deathScreen;
+
         private CharacterController controller;
         // Start is called before the first frame update
         void Start()
@@ -16,7 +20,14 @@ namespace Evader.Player
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("Obstacle"))
-                Destroy(gameObject);
+                Death();
+        }
+
+        public void Death()
+        {
+            Time.timeScale = 0f;
+            deathScreen.SetActive(true);
+            hud.SetActive(false);
         }
     }
 }

@@ -7,8 +7,8 @@ namespace Evader.Player
 {
     public class PlayerMovment : MonoBehaviour
     {
-        private float acceleration = 10f;
-        public float speed = 4;
+        public float acceleration = 20f;
+        public float speed = 20;
         private CharacterController controller;
         private Vector3 movmentVector;
 
@@ -23,8 +23,8 @@ namespace Evader.Player
         {
             movmentVector = new Vector3(Input.GetAxis("Horizontal") * speed, 0f , acceleration);
             controller.Move(movmentVector * Time.deltaTime);
-            acceleration += 0.001f;
-            speed += 0.001f;
+            acceleration += 0.01f;
+            speed += 0.002f;
         }
     }
 }

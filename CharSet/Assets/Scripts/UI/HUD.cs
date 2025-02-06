@@ -13,18 +13,17 @@ namespace Evader.UI
         public float score;
         private const string ScoreKey = "score";
 
-        // Start is called before the first frame update
+        
         void Start()
         {
             player = GameObject.FindGameObjectWithTag("Player");
         }
 
-        // Update is called once per frame
         void Update()
         {
             score = player.transform.position.z;
+            score = (int)score;
             scoreUI.text = score.ToString();
         }
     }
-
 }

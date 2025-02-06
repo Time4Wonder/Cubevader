@@ -13,6 +13,7 @@ namespace Evader.UI
         public TextMeshProUGUI score;
         public HUD hud;
 
+
         public void BackToMenu()
         {
             Time.timeScale = 1f;
@@ -25,10 +26,24 @@ namespace Evader.UI
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-        private void Start()
+        private void OnEnable()
         {
             score.text = "SCORE: " + hud.score.ToString();
+
+            if(hud.score > PlayerPrefs.GetInt("score"))
+                PlayerPrefs.SetInt("score", (int)hud.score);
         }
 
+        private void Update()
+        {
+            if(Input.GetKey(KeyCode.Space))
+            {
+                PlayAgain();
+            }
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                BackToMenu();
+            }
+        }
     }
 }

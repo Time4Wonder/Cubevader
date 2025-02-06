@@ -11,23 +11,28 @@ namespace Evader.Player
         public GameObject deathScreen;
 
         private CharacterController controller;
-        // Start is called before the first frame update
+
+
         void Start()
         {
             controller = GetComponent<CharacterController>();
         }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.CompareTag("Obstacle"))
-                Death();
-        }
-
-        public void Death()
+        public bool Death()
         {
             Time.timeScale = 0f;
             deathScreen.SetActive(true);
             hud.SetActive(false);
+
+            return true;
+        }
+
+        private void OnControllerColliderHit(ControllerColliderHit hit)
+        {
+            if(hit.gameObject.CompareTag("Obstacle"))
+            {
+                Death();
+            }
         }
     }
 }

@@ -14,4 +14,3 @@ namespace Evader.Enviroment
         }
     }
 }
-

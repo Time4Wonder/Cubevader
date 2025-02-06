@@ -14,22 +14,22 @@ namespace Evader.Enviroment
 
         private void Start()
         {
-            SpawnFiveChunks();
+            SpawnChunks(20);
         }
 
         private void Update()
         {
-            if(spawnCoords.z - GameObject.FindGameObjectWithTag("Player").transform.position.z <= 50)
+            if(spawnCoords.z - GameObject.FindGameObjectWithTag("Player").transform.position.z <= 400)
             {
-                SpawnFiveChunks();
+                SpawnChunks(10);
             }
         }
 
-        public void SpawnFiveChunks()
+        public void SpawnChunks(int counter)
         {
             int rnIndex;
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < counter; i++)
             {
                 rnIndex = Random.Range(0, 3);
                 Instantiate(obstacle[rnIndex], spawnCoords, Quaternion.identity);
